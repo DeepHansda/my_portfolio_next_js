@@ -1,14 +1,14 @@
-import { useContext, useEffect } from "react";
-import { ProjectContext } from "../../App";
+import { useAppContext } from "@/Context/AppContext";
+import { useEffect } from "react";
 import Fire from "../Fire/Fire";
 import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import Projects from "../Projects/Projects";
 
 function Main() {
-  const states = useContext(ProjectContext);
+  const {setOpenSideBar}= useAppContext();
   useEffect(() => {
-    states.setOpenSideBar(false);
+  setOpenSideBar(false);
   }, []);
 
   return (
