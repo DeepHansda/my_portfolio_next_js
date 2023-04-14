@@ -3,7 +3,6 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { FiDownload } from "react-icons/fi";
 import { ProgressData } from "../../Data/ProgressData";
-import "./home.css";
 function Home() {
   const { offset, screen } = useAppContext();
   return (

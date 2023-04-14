@@ -1,5 +1,4 @@
 import Link from "next/link";
-import "./projects.css";
 import { useRouter } from "next/router";
 import { AndroidSection, WebSection } from "./SectionRoutes";
 import { useEffect } from "react";
@@ -18,18 +17,23 @@ function Projects() {
     },
   ];
   const router = useRouter();
-  const currentPath = router.query.router;
-  let component;
+  const currentPath = router.query.path;
+  let component = routes[0].component;
 
+  console.log(currentPath);
   const findCurrentComp = () => routes.find((cmp) => cmp.slug == currentPath);
 
   useEffect(() => {
     const comp = findCurrentComp();
-    if (currentPath !== comp.slug) {
+    console.log(comp)
+    if (typeof comp == undefined && comp.slug !== currentPath) {
       router.push("/404");
+    } if (currentPath == "webProjects") {
+      component = routes[0].component;
+    } else {
+      component = comp?.component;
     }
-    component = comp.component;
-  }, [router]);
+  }, [currentPath]);
 
   return (
     <div className="projects">
@@ -38,16 +42,13 @@ function Projects() {
           <h2>projects</h2>
         </div>
         <div className="projects-selection">
-          <div className="project-web cat">
-            <Link href="/webProjects">
-              <div className="web-button">web app</div>
-            </Link>
-          </div>
-          <div className="project-and cat">
-            <Link href="/androidProjects">
-              <div className="and-button">android app</div>
-            </Link>
-          </div>
+          {routes.map((item, index) => (
+            <div key={index} className="project-web cat">
+              <Link href={{ pathname: "/", query: { path: item.slug } }}>
+                <div className="web-button">{item.lable}</div>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
       <div>{component}</div>

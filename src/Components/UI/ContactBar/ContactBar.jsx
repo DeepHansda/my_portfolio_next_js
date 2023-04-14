@@ -1,7 +1,6 @@
 import React from "react";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiLinkedin, FiFacebook, FiGithub } from "react-icons/fi";
-import "./socialContactBar.css";
 
 function SocialContactBar() {
   return (

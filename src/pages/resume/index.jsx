@@ -1,11 +1,10 @@
+import { useAppContext } from "@/Context/AppContext";
 import { Button } from "@mui/material";
-import React, { useContext, useEffect } from "react";
-import { ProjectContext } from "../../App";
-import "./resume.css";
+import { useEffect } from "react";
 export default function Resume() {
-  const states = useContext(ProjectContext);
+  const { setOpenSideBar } = useAppContext();
   useEffect(() => {
-    states.setOpenSideBar(false);
+    setOpenSideBar(false);
   }, []);
 
   return (
@@ -22,7 +21,12 @@ export default function Resume() {
           </a>
         </div>
 
-        <iframe src="https://drive.google.com/file/d/1g-wMWPzy0ZXblhYtfBmRE2SSpdVWRrqU/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe
+          src="https://drive.google.com/file/d/1g-wMWPzy0ZXblhYtfBmRE2SSpdVWRrqU/preview"
+          width="640"
+          height="480"
+          allow="autoplay"
+        ></iframe>
       </div>
     </div>
   );

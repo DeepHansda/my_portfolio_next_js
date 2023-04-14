@@ -1,13 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import "./contact.css";
-import ContactBar from "../UI/ContactBar/ContactBar";
-import Form from "../UI/Form/Form";
-import EmailNumber from "../UI/EmailNumber/EmailNumber";
-import { ProjectContext } from "../../App";
+import { useAppContext } from "@/Context/AppContext";
+import { useEffect } from "react";
+import ContactBar from "../../Components/UI/ContactBar/ContactBar";
+import EmailNumber from "../../Components/UI/EmailNumber/EmailNumber";
+import Form from "../../Components/UI/Form/Form";
 function Contact() {
-  const states = useContext(ProjectContext);
+  const { setOpenSideBar } = useAppContext();
   useEffect(() => {
-    states.setOpenSideBar(false);
+    setOpenSideBar(false);
   }, []);
 
   return (

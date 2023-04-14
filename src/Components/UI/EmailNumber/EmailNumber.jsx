@@ -1,5 +1,4 @@
 import React from "react";
-import "./email.css";
 function EmailNumber() {
   return (
     <div className="emailNumber">

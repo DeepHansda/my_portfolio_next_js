@@ -1,6 +1,5 @@
 import React from "react";
 import { FiMenu } from "react-icons/fi";
-import "./navbar.css";
 
 export default function Navbar({setOpenSideBar}) {
   return (

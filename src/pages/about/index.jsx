@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import "./about.css";
-import SocialContactBar from "../UI/ContactBar/ContactBar";
-import EmailNumber from "../UI/EmailNumber/EmailNumber";
+import { useAppContext } from "@/Context/AppContext";
+import { useEffect } from "react";
+import SocialContactBar from "../../Components/UI/ContactBar/ContactBar";
+import EmailNumber from "../../Components/UI/EmailNumber/EmailNumber";
 import aboutData from "../../Data/AboutData";
-import { ProjectContext } from "../../App";
 
 function About() {
-  const states = useContext(ProjectContext);
+  const { setOpenSideBar } = useAppContext();
   useEffect(() => {
-    states.setOpenSideBar(false);
+    setOpenSideBar(false);
   }, []);
   return (
     <div className="about">

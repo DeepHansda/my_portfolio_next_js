@@ -1,6 +1,4 @@
 import React from "react";
-import "./fire.css";
-
 function Fire() {
   return (
     <div className="fire">

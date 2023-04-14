@@ -1,22 +1,21 @@
 import { useAppContext } from "@/Context/AppContext";
 import { CircularProgress, Container, Typography } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
-import { ProjectContext } from "../../App";
+import { useEffect, useState } from "react";
 import Project from "../UI/WebAppUI/Project";
 import AndroidProject from "../UI/androidProjectUI/AndroidProject";
-import "./cat.css";
 
 export function WebSection() {
-  const { getAllProjects, isloading } = useAppContext();
-  const [projects,setProjects] = useState([])
+  const { getAllProjects, isLoading } = useAppContext();
+  const [projects, setProjects] = useState([]);
 
-  const getProjectsData = async() =>{
-    const result = await getAllProjects()
-    console.log(result)
-  }
-  useEffect(()=>{
-    getProjectsData()
-  },[])
+  const getProjectsData = async () => {
+    const result = await getAllProjects();
+    setProjects(result?.data.length > 0 && result?.data?.filter((item)=>item.type=="webApp"))
+    console.log(result.data)
+  };
+  useEffect(() => {
+    getProjectsData();
+  }, []);
   // const projectsData =
   //   projects &&
   //   projects.filter((pro) => {
@@ -25,7 +24,7 @@ export function WebSection() {
 
   return (
     <>
-      {isloading ? (
+      {isLoading ? (
         <div
           style={{
             width: "100%",
@@ -56,16 +55,19 @@ export function WebSection() {
 }
 
 export function AndroidSection() {
-  const { projects, loading } = useContext(ProjectContext);
+  const { getAllProjects, isLoading } = useAppContext();
+  const [projects, setProjects] = useState([]);
 
-  const projectsData =
-    projects &&
-    projects.filter((pro) => {
-      return pro.type === "androidApp";
-    });
+  const getProjectsData = async () => {
+    const result = await getAllProjects();
+    setProjects(result?.data.length > 0 && result?.data?.filter((item)=>item.type=="androidApp"))
+  };
+  useEffect(() => {
+    getProjectsData();
+  }, []);
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <div
           style={{
             width: "100%",
@@ -78,8 +80,8 @@ export function AndroidSection() {
         </div>
       ) : (
         <div className="android-showcase-container">
-          {projectsData.length != 0 ? (
-            projectsData.map((project, index) => {
+          {projects.length != 0 ? (
+            projects.map((project, index) => {
               return <AndroidProject project={project} key={project._id} />;
             })
           ) : (

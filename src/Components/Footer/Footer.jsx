@@ -1,5 +1,4 @@
 import React from "react";
-import "./footer.css";
 import SocialContactBar from "../UI/ContactBar/ContactBar";
 import EmailNumber from "../UI/EmailNumber/EmailNumber";
 import Form from "../UI/Form/Form";

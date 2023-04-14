@@ -2,9 +2,9 @@ import ContactBar from "@/Components/ContactSidebar/ContactBar";
 import Navbar from "@/Components/Navbar/Navbar";
 import Sidebar from "@/Components/Sidebar/Sidebar";
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const AppContext = createContext();
+const AppContext = createContext({});
 const axiosClient = axios.create({
   baseURL: "https://my-portfolio-backend-deephansda.vercel.app/api",
   headers: { "Content-Type": "application/json" },
@@ -14,7 +14,7 @@ function AppContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [offset, setOffset] = useState(0);
-  const [screen, setScreen] = useState(window.innerWidth);
+  const [screen, setScreen] = useState(0);
 
   useEffect(() => {
     function handleScroll() {
@@ -29,6 +29,7 @@ function AppContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    setScreen(window.innerWidth)
     function handleSize() {
       setScreen(window.innerWidth);
     }
@@ -62,8 +63,7 @@ function AppContextProvider({ children }) {
       })
       .catch((error) => {
         setIsLoading(false);
-
-        console.log(error);
+        return error;
       });
   };
 
@@ -76,6 +76,8 @@ function AppContextProvider({ children }) {
         isLoading,
         offset,
         screen,
+        setOpenSideBar,
+        openSideBar
       }}
     >
       <div className="App" style={{ overflowX: "hidden" }}>
@@ -102,6 +104,7 @@ function AppContextProvider({ children }) {
   );
 }
 
-export const useAppContext = useContext(AppContext);
+export const useAppContext = () => useContext(AppContext);
+
 
 export default AppContextProvider;

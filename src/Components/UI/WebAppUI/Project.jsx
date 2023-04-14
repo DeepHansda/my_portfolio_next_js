@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./project.css";
 import WebSlider from "./WebSlider";
 import { FiGithub, FiGlobe } from "react-icons/fi";
 import { useState } from "react";

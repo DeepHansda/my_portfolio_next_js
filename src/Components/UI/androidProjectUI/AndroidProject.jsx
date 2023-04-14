@@ -1,5 +1,4 @@
 import React from "react";
-import "./android.css";
 import AndroidSlider from "./AndroidSlider";
 import { FiGithub, FiGlobe } from "react-icons/fi";
 

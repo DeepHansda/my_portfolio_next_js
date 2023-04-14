@@ -1,3 +1,20 @@
+@import url('..//pages/about/about.module.css');
+@import url('../pages/contact/contact.css');
+@import url('../Components/ContactSidebar/contactbar.css');
+@import url('../Components/Fire/fire.css');
+@import url('../Components/Footer/footer.css');
+@import url('../Components/Home/home.css');
+@import url('../Components/Navbar/navbar.css');
+@import url('../Components/Projects/cat.css');
+@import url('../Components/Projects/projects.css');
+@import url('../pages/resume/resume.css');
+@import url('../Components/Sidebar/sidebar.css');
+@import url('../Components/UI/androidProjectUI/android.css');
+@import url('../Components/UI/ContactBar/socialContactBar.css');
+@import url('../Components/UI/EmailNumber/email.css');
+@import url('../Components/UI/Form/form.css');
+@import url('../Components/UI/WebAppUI/project.css');
+
 *,
 *:before,
 *:after {

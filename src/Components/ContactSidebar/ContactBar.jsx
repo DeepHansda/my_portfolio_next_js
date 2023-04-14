@@ -4,7 +4,6 @@ import {
   FiGithub,
   FiLinkedin
 } from "react-icons/fi";
-import "./contactbar.css";
 function ContactBar() {
   return (
     <div className="contactBar">

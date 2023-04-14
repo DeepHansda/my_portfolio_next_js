@@ -1,47 +1,42 @@
-import React, { useState } from "react";
-import { Snackbar, Alert, Fade, CircularProgress } from "@mui/material";
-import "./form.css";
-import { useDispatch, useSelector } from "react-redux";
-import { createContact } from "../../../Redux/Actions/contactActions";
+import { useAppContext } from "@/Context/AppContext";
+import { Alert, CircularProgress, Fade, Snackbar } from "@mui/material";
+import { useState } from "react";
 
 export default function Form() {
   const [fullName, setFullName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [progress, setProgress] = useState(false);
   const [open, setOpen] = useState(false);
   const [dis, setDis] = useState(false);
-  const dispatch = useDispatch();
+  const { contact, isLoading } = useAppContext();
+
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("hello");
+
     const data = {
       fullName: fullName,
       email: email,
       contactNumber: contactNumber,
       message: message,
     };
-    setProgress(true);
-    dispatch(createContact(data))
+
+    contact(data)
       .then((res) => {
-        if (res.success === 1) {
-          setProgress(false);
+        console.log(res)
+        if (res.status === 200) {
           setOpen(true);
           setDis(true);
-        } else if (res.success === 0) {
-          setProgress(false);
+        } else if (res.status !== 200) {
           setOpen(true);
           setDis(false);
-          console.log(res.error);
+          console.log(res);
         } else {
-          setProgress(false);
           setOpen(true);
           setDis(false);
         }
       })
       .catch((err) => {
-        setProgress(false);
         setOpen(true);
         setDis(false);
         console.log(err);
@@ -78,7 +73,7 @@ export default function Form() {
       </Snackbar>
       <form onSubmit={submitHandler}>
         <div className="form">
-          {progress && <CircularProgress />}
+          {isLoading && <CircularProgress />}
           <div className="input-container ic1">
             <input
               id="firstname"
