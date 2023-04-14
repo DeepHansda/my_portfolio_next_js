@@ -4,9 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function WebSlider({ images }) {
-
   var settings = {
-    lazyLoad: true,
     infinite: true,
     speed: 2000,
     slidesToShow: 1,
@@ -23,7 +21,6 @@ function WebSlider({ images }) {
       <Slider {...settings}>
         {images.map((image) => {
           return (
-            
             <div className="project-img">
               <img src={image.img} alt="project-img" />
             </div>

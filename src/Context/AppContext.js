@@ -2,6 +2,7 @@ import ContactBar from "@/Components/ContactSidebar/ContactBar";
 import Navbar from "@/Components/Navbar/Navbar";
 import Sidebar from "@/Components/Sidebar/Sidebar";
 import axios from "axios";
+import Image from "next/image";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AppContext = createContext({});
@@ -85,10 +86,12 @@ function AppContextProvider({ children }) {
           className="universalBackground"
           style={{ display: screen < 600 ? "none" : "block" }}
         >
-          <img
+          <Image
             src={
               "https://res.cloudinary.com/manjiro/image/upload/v1657333328/portfolio_images/xor/background_uwvhvi.png"
             }
+            width={4002}
+            height={28142}
             alt="background"
             style={{
               transform: `translateY(${offset * 0.5}px)`,

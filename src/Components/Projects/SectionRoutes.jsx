@@ -10,8 +10,10 @@ export function WebSection() {
 
   const getProjectsData = async () => {
     const result = await getAllProjects();
-    setProjects(result?.data.length > 0 && result?.data?.filter((item)=>item.type=="webApp"))
-    console.log(result.data)
+    setProjects(
+      result?.data.length > 0 &&
+        result?.data?.filter((item) => item.type == "webApp")
+    );
   };
   useEffect(() => {
     getProjectsData();
@@ -60,7 +62,10 @@ export function AndroidSection() {
 
   const getProjectsData = async () => {
     const result = await getAllProjects();
-    setProjects(result?.data.length > 0 && result?.data?.filter((item)=>item.type=="androidApp"))
+    setProjects(
+      result?.data.length > 0 &&
+        result?.data?.filter((item) => item.type == "androidApp")
+    );
   };
   useEffect(() => {
     getProjectsData();

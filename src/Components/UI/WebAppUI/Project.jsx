@@ -1,19 +1,7 @@
-import React, { useEffect } from "react";
-import WebSlider from "./WebSlider";
-import { FiGithub, FiGlobe } from "react-icons/fi";
-import { useState } from "react";
 import { Divider } from "@mui/material";
+import { FiGithub, FiGlobe } from "react-icons/fi";
+import WebSlider from "./WebSlider";
 function Project({ project }) {
-  const [screen, setScreen] = useState(window.innerWidth);
-  useEffect(() => {
-    function handleSize() {
-      setScreen(window.innerWidth);
-    }
-    window.addEventListener("resize", handleSize);
-    return () => {
-      window.removeEventListener("resize", handleSize);
-    };
-  }, []);
 
   const dateConverter = (d) => {
     var strArray = [
@@ -32,8 +20,6 @@ function Project({ project }) {
     ];
 
     const fDate = new Date(d);
-    console.log(fDate.getMonth);
-
     return `${strArray[fDate.getMonth()]} ${fDate.getFullYear()}`;
   };
 

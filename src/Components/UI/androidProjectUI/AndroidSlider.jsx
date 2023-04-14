@@ -1,17 +1,13 @@
-import React, { Component } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import img1 from "./img1.jpg";
-import img2 from "./img2.jpg";
-import img3 from "./img3.jpg";
+import "slick-carousel/slick/slick.css";
 
 function AndroidSlider({ images}){
   
     var settings = {
       // dots: true,
       // className: "",
-      lazyLoad: true,
+      // lazyLoad: true,
       infinite: true,
       speed: 2000,
       slidesToShow: 1,

@@ -3,16 +3,19 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { FiDownload } from "react-icons/fi";
 import { ProgressData } from "../../Data/ProgressData";
+import Image from "next/image";
 function Home() {
   const { offset, screen } = useAppContext();
   return (
     <div className="home">
       <div className="home-background">
-        <img
+        <Image
           src={
             "https://res.cloudinary.com/manjiro/image/upload/v1655702305/portfolio_images/xor/fotis-fotopoulos-6sAl6aQ4OWI-unsplash_s50hcp.jpg"
           }
-          alt=""
+          alt="main"
+          width={1920}
+          height={1080}
           style={{
             transform: `${
               screen < 600 ? "none" : `translateY(${offset * 0.4}px)`
