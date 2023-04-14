@@ -53,9 +53,9 @@ function AndroidProject({ project }) {
 
           <div className="android-project-tech-container">
             <div className="android-project-tech-list">
-              {project.tech_list.map((tech) => {
+              {project.tech_list.map((tech, index) => {
                 return (
-                  <li className="android-project-tech">
+                  <li key={index} className="android-project-tech">
                     <img src={tech.tech} alt={tech.name} />
                   </li>
                 );

@@ -41,9 +41,9 @@ function About() {
                 <hr />
               </div>
               <div class="steps">
-                {aboutData.map((d) => {
+                {aboutData.map((d, i) => {
                   return (
-                    <div class="steps-container">
+                    <div key={i} class="steps-container">
                       <div class="content">
                         <h2>{d.course}</h2>
                         <p>{d.university}</p>

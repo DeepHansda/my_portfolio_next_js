@@ -28,7 +28,7 @@ function Home() {
           <div className="home-intro-text">
             <h2>Deep Hansda</h2>
             <p>
-              "Be Water, My Friend."
+              Be Water, My Friend.
               <br />
               <span>--Bruce Lee</span>
             </p>
@@ -49,9 +49,9 @@ function Home() {
 
         <div className="progress-bars">
           <ul className="progress-bar-container">
-            {ProgressData.map((data) => {
+            {ProgressData.map((data, index) => {
               return (
-                <li>
+                <li key={index}>
                   <CircularProgressbar
                     value={data.percent}
                     text={`${data.percent}%`}
