@@ -1,3 +1,4 @@
+import Expriences from "@/Components/Expriecences/Expriences";
 import Fire from "@/Components/Fire/Fire";
 import Footer from "@/Components/Footer/Footer";
 import GitCommits from "@/Components/GitCommits/GitCommits";
@@ -22,6 +23,7 @@ export default function Index() {
       <div className="main">
         <Home />
         <Fire />
+        <Expriences/>
         <GitCommits/>
         <Projects />
         <Footer />

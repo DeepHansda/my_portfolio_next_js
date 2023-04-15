@@ -68,6 +68,18 @@ function AppContextProvider({ children }) {
       });
   };
 
+  const getExpriences = async()=>{
+    setIsLoading(true)
+    return await axiosClient.get('/getExpriences').then((res) => {
+      setIsLoading(false);
+      return res;
+    })
+    .catch((error) => {
+      setIsLoading(false);
+      return error;
+    });
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -78,7 +90,8 @@ function AppContextProvider({ children }) {
         offset,
         screen,
         setOpenSideBar,
-        openSideBar
+        openSideBar,
+        getExpriences
       }}
     >
       <div className="App" style={{ overflowX: "hidden" }}>

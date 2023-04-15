@@ -1,27 +1,10 @@
 import { Divider } from "@mui/material";
 import { FiGithub, FiGlobe } from "react-icons/fi";
 import WebSlider from "./WebSlider";
+import { dateConverter } from "@/utils/dateConverter";
 function Project({ project }) {
 
-  const dateConverter = (d) => {
-    var strArray = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-    const fDate = new Date(d);
-    return `${strArray[fDate.getMonth()]} ${fDate.getFullYear()}`;
-  };
+  
 
   // const dom = new DOMParser()
   // const desContent = dom.parseFromString("<p>hello world<p/>","text/html");

@@ -71,6 +71,8 @@
   position: relative;
   background-color: inherit;
   width: calc(50% + 32px);
+  font-family: "Poppins", sans-serif;
+  
 }
 
 .steps-container .content {

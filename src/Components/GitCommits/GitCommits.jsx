@@ -13,6 +13,7 @@ function GitCommits() {
             <Image src={"https://res.cloudinary.com/manjiro/image/upload/v1681529705/portfolio_images/git/contributions_1_eimhgn.png"} alt='contributions' width={776} height={714}/>
             </div>
         </div>
+        <input type="date" onChange={(e)=>console.log(e.target.value)}/>
     </div>
   )
 }

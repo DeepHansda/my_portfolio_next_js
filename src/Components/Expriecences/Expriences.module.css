@@ -1,0 +1,59 @@
+.exprience {
+  max-width: 1280px;
+  margin: 10px auto;
+}
+.exprienceTitle {
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+  border-bottom: 1px solid #ffffff80;
+}
+.exprienceTitle h2 {
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+  font-size: 3em;
+  color: #fff;
+}
+.exprienceContainer{
+    padding: 10px;
+}
+.expriencesStepsDesc li {
+  font-size: 14px;
+  list-style-type: disc;
+}
+.expriencesStepsImg {
+  width: 65px;
+  height: 65px;
+  overflow: hidden;
+  border-radius: 100%;
+  flex-shrink: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  z-index: 777;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+}
+.expriencesStepsImg img {
+  max-width: 100%;
+  height: fit-content;
+}
+.stepDate{
+    display: flex;
+    align-items: center;
+
+}
+.stepDate p{
+    font-size: 5px;
+}
+
+@media screen and (min-width:600px) {
+    .exprienceContainer{
+        padding: 15px;
+    }
+}
+@media screen and (min-width:1024px) {
+.exprienceTitle h2 {
+    font-size: 5em;
+}
+}
