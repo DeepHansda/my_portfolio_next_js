@@ -1,0 +1,54 @@
+.gitContainer{
+    width: 100%;
+    max-width: 1280px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+
+}
+.gitTitle{
+    width: 100%;
+    text-align: left;
+    padding:20px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+.gitTitle h2{
+font-family: "Poppins",sans-serif;
+  text-transform:capitalize;
+  font-size: 3em;
+  color:#fff;
+}
+.gitCommitsBg{
+    margin-top: 20px;
+    text-align: center;
+    
+}
+.gitImageContainer{
+    background-color: rgba(225, 225, 225, 0.05);
+    backdrop-filter: blur(10px);
+    /* border-radius: 0px 0px 80px 0px; */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 16px 27px rgb(0 11 30 / 10%);
+    padding: 10px;
+}
+.gitImageContainer img{
+    max-width: 100%;
+    height: fit-content
+}
+
+@media screen and (min-width:600px){
+    .gitCommitsBg{
+        margin: 25px;
+    }
+}
+@media screen and (min-width:768px){
+    .gitCommitsBg{
+        margin: 35px;
+    }
+.gitImageContainer{
+    padding: 25px;
+}
+}

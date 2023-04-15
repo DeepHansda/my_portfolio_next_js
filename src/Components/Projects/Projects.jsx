@@ -17,32 +17,31 @@ function Projects() {
     },
   ];
   const [component, setComponent] = useState(routes[0]);
+  const [pathName, setPathName] = useState("webProjects");
   const router = useRouter();
-  const pathName = router.pathname;
-  const currentPath = router.query.path;
 
-  const findCurrentComp = () => routes.find((cmp) => cmp.slug == currentPath);
+  const findCurrentComp = () => routes.find((cmp) => cmp.slug == pathName);
 
+  const handlePath = (path) => {
+    setPathName(path);
+  };
   useEffect(() => {
-    if (pathName == "/") {
+    if (pathName == "webProjects") {
       setComponent(routes[0]);
     }
   }, []);
   useEffect(() => {
     const comp = findCurrentComp();
     console.log(comp);
-    if (typeof comp == undefined && comp.slug !== currentPath) {
+    if (typeof comp == undefined && comp.slug !== pathName) {
       router.push("/404");
     }
-    if (pathName == "/") {
+    if (pathName == "webProjects") {
       setComponent(routes[0]);
-    }
-    if (currentPath == "webProjects") {
-      setComponent(comp);
     } else {
       setComponent(comp);
     }
-  }, [currentPath]);
+  }, [pathName]);
 
   return (
     <div className="projects">
@@ -53,9 +52,9 @@ function Projects() {
         <div className="projects-selection">
           {routes.map((item, index) => (
             <div key={index} className="project-web cat">
-              <Link href={{ pathname: "/", query: { path: item.slug } }}>
-                <div className="web-button">{item.lable}</div>
-              </Link>
+              <div className="web-button" onClick={() => handlePath(item.slug)}>
+                {item.lable}
+              </div>
             </div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import Fire from "@/Components/Fire/Fire";
 import Footer from "@/Components/Footer/Footer";
+import GitCommits from "@/Components/GitCommits/GitCommits";
 import Home from "@/Components/Home/Home";
 import Projects from "@/Components/Projects/Projects";
 import { useAppContext } from "@/Context/AppContext";
@@ -21,6 +22,7 @@ export default function Index() {
       <div className="main">
         <Home />
         <Fire />
+        <GitCommits/>
         <Projects />
         <Footer />
       </div>
