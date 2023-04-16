@@ -13,8 +13,6 @@ function Expriences() {
     setExperiences(data?.data?.expriences);
   };
 
-  console.log(expriences);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,17 +28,28 @@ function Expriences() {
               expriences?.map((ex, i) => {
                 return (
                   <div key={i} className="steps-container">
-                    <div className="content">
+                    <div className={styles.expContent}>
                       <h2>{ex.title}</h2>
+                      <div className={styles.expCompany}>
+                        <h4>{ex.companyName}</h4>
+                        <p> &middot; {ex.position}</p>
+                      </div>
                       <div className={styles.stepDate}>
-                        <p>{dateConverter(ex.duration.joiningDate)}</p>
-                        
+                        <p>{dateConverter(ex.duration.joiningDate)}</p>-
                         <p>{dateConverter(ex.duration.leavingDate)}</p>
                       </div>
                       <div
                         className={styles.expriencesStepsDesc}
                         dangerouslySetInnerHTML={{ __html: ex.des }}
                       ></div>
+
+                      <div className={styles.expSkillsContainer}>
+                        {ex.skills.map((skill) => (
+                          <div key={skill.title} className={styles.expSkills}>
+                            <p>&middot; {skill.title}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <i className="step-line"></i>
                     <div className={styles.expriencesStepsImg}>
