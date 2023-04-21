@@ -8,6 +8,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext({});
 const axiosClient = axios.create({
   baseURL: "https://my-portfolio-backend-deephansda.vercel.app/api",
+  // baseURL: "http://localhost:3400/api",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -16,29 +17,7 @@ function AppContextProvider({ children }) {
   const [openSideBar, setOpenSideBar] = useState(false);
   const [offset, setOffset] = useState(0);
   const [screen, setScreen] = useState(0);
-
-  useEffect(() => {
-    function handleScroll() {
-      setOffset(window.pageYOffset);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    setScreen(window.innerWidth)
-    function handleSize() {
-      setScreen(window.innerWidth);
-    }
-    window.addEventListener("resize", handleSize);
-    return () => {
-      window.removeEventListener("resize", handleSize);
-    };
-  }, []);
+  const [resume, setResume] = useState({});
 
   const getAllProjects = async () => {
     setIsLoading(true);
@@ -68,17 +47,57 @@ function AppContextProvider({ children }) {
       });
   };
 
-  const getExpriences = async()=>{
-    setIsLoading(true)
-    return await axiosClient.get('/getExpriences').then((res) => {
-      setIsLoading(false);
-      return res;
-    })
-    .catch((error) => {
-      setIsLoading(false);
-      return error;
-    });
-  }
+  const getExpriences = async () => {
+    setIsLoading(true);
+    return await axiosClient
+      .get("/getExpriences")
+      .then((res) => {
+        setIsLoading(false);
+        return res;
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        return error;
+      });
+  };
+
+  const getResume = async () => {
+    setIsLoading(true);
+    return await axiosClient
+      .get("/getResume")
+      .then((data) => {
+        setIsLoading(false);
+        setResume(data?.data?.result[0]);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        return error;
+      });
+  };
+
+  useEffect(() => {
+    getResume();
+    function handleScroll() {
+      setOffset(window.pageYOffset);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setScreen(window.innerWidth);
+    function handleSize() {
+      setScreen(window.innerWidth);
+    }
+    window.addEventListener("resize", handleSize);
+    return () => {
+      window.removeEventListener("resize", handleSize);
+    };
+  }, []);
 
   return (
     <AppContext.Provider
@@ -91,7 +110,9 @@ function AppContextProvider({ children }) {
         screen,
         setOpenSideBar,
         openSideBar,
-        getExpriences
+        getExpriences,
+        getResume,
+        resume,
       }}
     >
       <div className="App" style={{ overflowX: "hidden" }}>
@@ -121,6 +142,5 @@ function AppContextProvider({ children }) {
 }
 
 export const useAppContext = () => useContext(AppContext);
-
 
 export default AppContextProvider;

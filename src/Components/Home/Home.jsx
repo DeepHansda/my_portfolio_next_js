@@ -5,7 +5,7 @@ import { FiDownload } from "react-icons/fi";
 import { ProgressData } from "../../Data/ProgressData";
 import Image from "next/image";
 function Home() {
-  const { offset, screen } = useAppContext();
+  const { offset, screen, resume } = useAppContext();
   return (
     <div className="home">
       <div className="home-background">
@@ -36,7 +36,7 @@ function Home() {
 
           <div className="download-button">
             <a
-              href="https://drive.google.com/file/d/1g-wMWPzy0ZXblhYtfBmRE2SSpdVWRrqU/view?usp=sharing"
+              href={`${resume.resume}/view?usp=sharing`}
               target="_blank"
             >
               <p>

@@ -1,8 +1,9 @@
 import { useAppContext } from "@/Context/AppContext";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import styles from "./Expriences.module.css";
 import { dateConverter } from "@/utils/dateConverter";
+import { monthDiff } from "@/utils/monthDiff";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import styles from "./Expriences.module.css";
 
 function Expriences() {
   const { getExpriences } = useAppContext();
@@ -34,10 +35,19 @@ function Expriences() {
                         <h4>{ex.companyName}</h4>
                         <p> &middot; {ex.position}</p>
                       </div>
+                      <div className={styles.expDateContainer}>
                       <div className={styles.stepDate}>
                         <p>{dateConverter(ex.duration.joiningDate)}</p>-
                         <p>{dateConverter(ex.duration.leavingDate)}</p>
                       </div>
+                      <div className={styles.expMonthfDiff}>
+                        <p>&middot; {monthDiff(
+                          new Date(ex.duration.joiningDate),
+                          new Date(ex.duration.leavingDate)
+                        )} Months</p>
+                      </div>
+                      </div>
+                      
                       <div
                         className={styles.expriencesStepsDesc}
                         dangerouslySetInnerHTML={{ __html: ex.des }}

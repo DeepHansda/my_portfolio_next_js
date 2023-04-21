@@ -1,5 +1,5 @@
 import { useAppContext } from "@/Context/AppContext";
-import { Alert, CircularProgress, Fade, Snackbar } from "@mui/material";
+import { Alert, Fade, Snackbar } from "@mui/material";
 import { useState } from "react";
 
 export default function Form() {
@@ -73,7 +73,6 @@ export default function Form() {
       </Snackbar>
       <form onSubmit={submitHandler}>
         <div className="form">
-          {isLoading && <CircularProgress />}
           <div className="input-container ic1">
             <input
               id="firstname"
